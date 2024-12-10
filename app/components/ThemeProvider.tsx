@@ -17,9 +17,9 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = React.useState<Theme>(() => {
     if (typeof window !== 'undefined') {
       const stored = localStorage.getItem('theme') as Theme;
-      return stored || 'system';
+      return stored || '';
     }
-    return 'system';
+    return '';
   });
 
   React.useEffect(() => {
