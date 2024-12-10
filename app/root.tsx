@@ -9,6 +9,8 @@ import {
 } from '@remix-run/react';
 import styles from './styles/tailwind.css'
 import Header from './components/Header';
+import { ThemeProvider } from './components/ThemeProvider';
+import { ThemeScript } from './theme-script';
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: styles },
@@ -31,10 +33,13 @@ export default function App() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        <ThemeScript />
       </head>
-      <body>
-        <Header />
-        <Outlet />
+      <body className="bg-gray-50 dark:bg-gray-900">
+        <ThemeProvider>
+          <Header />
+          <Outlet />
+        </ThemeProvider>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
